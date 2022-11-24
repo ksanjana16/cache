@@ -1,0 +1,74 @@
+#BFS
+
+tree = {
+    'A' : ['B', 'C'],
+    'B' : ['D','E'],
+    'C' : ['F'],
+    'D' : [],
+    'E' : ['G'],
+    'F' : [],
+    'G' : []
+}
+
+visited_node = []
+queue = []
+
+def bfs(visited_node, tree, node):
+    visited_node.append(node)
+    queue.append(node)
+    
+    while queue:
+        x = queue.pop(0)
+        print(x, end = " ")
+        
+        for neighbour in tree[x]:
+            if neighbour not in visited_node:
+                queue.append(neighbour)
+print("BFS traversal is : ")                
+bfs(visited_node, tree, 'A')
+
+OUTPUT:-
+
+BFS traversal is : 
+A B C D E F G 
+
+
+
+
+
+#DFS
+
+tree = {
+    'A' : ['B', 'C'],
+    'B' : ['D','E'],
+    'C' : ['F'],
+    'D' : [],
+    'E' : ['G'],
+    'F' : [],
+    'G' : []
+}
+
+visited_node = set()
+
+def dfs(visited_node, tree, node):
+    if node not in visited_node:
+        print(node)
+        visited_node.add(node)
+        for neighbour in tree[node]:
+            dfs(visited_node, tree, neighbour)
+print("\n")
+print("DFS traversal is : ")
+dfs(visited_node, tree, 'A')
+
+
+OUTPUT:-
+
+DFS traversal is : 
+A
+B
+D
+E
+G
+C
+F
+​
